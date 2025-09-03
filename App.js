@@ -1,37 +1,14 @@
-// const heading = document.createElement("h1");
-// heading.textContent = "hello from heading";
-// const rootEl = document.getElementById("root");
-// rootEl.appendChild(heading);
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-// const heading = React.createElement(
-//   "h1",
-//   { className: "heading-css" },
-//   "hello from react heading....."
-// );
-
-// const root = ReactDOM.createRoot(document.getElementById("root"));
-// root.render(heading);
-
-// <div>
-// <div>
-//     <h1>child 1</h1>
-//         <h1>child 2</h1>
-// </div>
-// <div>
-//     <h1>child 1</h1>
-//         <h1>child 2</h1>
-// </div>
-
-// </div>
-
-const divElement = React.createElement("div", {}, [
-  React.createElement("div", {}, [
-    React.createElement("h1", { className: "heading" }, "child1"),
-    React.createElement("h1", {}, "child2"),
+const divElement = React.createElement("div", { key: "1" }, [
+  React.createElement("div", { key: "2" }, [
+    React.createElement("h1", { className: "heading", key: "3" }, "child1"),
+    React.createElement("h1", { key: "4" }, "child2"),
   ]),
-  React.createElement("div", {}, [
-    React.createElement("h1", {}, "child1"),
-    React.createElement("h1", {}, "child2"),
+  React.createElement("div", { key: "5" }, [
+    React.createElement("h1", { key: "6" }, "child1"),
+    React.createElement("h1", { key: "7" }, "child2"),
   ]),
 ]);
 

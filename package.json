@@ -1,0 +1,29 @@
+{
+  "name": "namaste-react-ashok",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ashokkumarkarri/namaste-react-js-ashok.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ashokkumarkarri/namaste-react-js-ashok/issues"
+  },
+  "homepage": "https://github.com/Ashokkumarkarri/namaste-react-js-ashok#readme",
+  "description": "",
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  },
+  "dependencies": {
+    "browserslist": "^4.25.4",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+}
