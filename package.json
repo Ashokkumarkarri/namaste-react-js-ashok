@@ -2,6 +2,8 @@
   "name": "namaste-react-ashok",
   "version": "1.0.0",
   "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "repository": {
@@ -20,8 +22,8 @@
   },
   "dependencies": {
     "browserslist": "^4.25.4",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "browserslist": [
     "last 2 versions"
