@@ -1,162 +1,125 @@
-# **3 - Laying The Foundation**
+https://namastedev.com/blog/igniting-our-app/
 
-https://namastedev.com/blog/namaste-react-episode-2-laying-the-foundation/
+**📦 Part 1 - NPM and Package Management**
 
-**🛠️ Part 1 - Using NPM Scripts**
+**What is NPM?**
 
-- To start your project with Parcel, you can either run:
+- **NPM** stands for more than just Node Package Manager. It's a package manager, but it also encompasses many things around JavaScript project management.
+- It's a central **repository** for all packages that your project might need.
+
+**How to Initialize NPM in Your Project**
+
+- Run the command `npm init` to create an npm configuration in your project.
+- You'll answer a few questions:
+  - **Test command**: Use `jest` (covered in future episodes).
+  - Other options can be left as default.
+- After the initialization, a file called `package.json` is created, which holds your project's dependencies and configuration.
+
+**What is `package.json`?**
+
+- It stores **dependencies** for your project and other important project configurations.
+
+**Installing Dependencies**
+
+- One crucial dependency is a **bundler**.
+  - A bundler packages your app for production use.
+  - Tools like **Webpack** and **Babel** are used in **Create React App**.
+  - In this project, we'll use **Parcel**.
+- Install Parcel using the following command:
+  ```
+  npm install -D parcel
+  ```
+- There are two types of dependencies:
+  1. **Normal Dependencies**: Required for the app to run.
+  2. **Development Dependencies**: Needed only during development (e.g., testing, bundling).
+
+**Difference between `package-lock.json` and `package.json`**
+
+- **`package.json`** specifies the project dependencies and their acceptable version ranges (e.g., `^2.12.0`, meaning only minor updates).
+- **`package-lock.json`** locks down the exact version of all dependencies used by the project to ensure consistent builds.
+
+**Dependency Tree and Node Modules**
+
+- Dependencies often depend on other dependencies, forming a **dependency tree**.
+- The `node_modules` directory can get very large, so it's recommended to add it to `.gitignore` to avoid uploading it to GitHub.
+
+---
+
+**🚀 Part 2 - Setting Up React and Using Parcel**
+
+**Running the App with Parcel**
+
+- To ignite the app, run the following command:
   ```
   npx parcel index.html
   ```
-- However, a more convenient way is to add scripts in `package.json`. This allows you to start the project with simple npm commands. Here's an example of the script section:
+- **npm** is used for installing packages, while **npx** is used to execute packages.
+
+**CDN vs. NPM for React**
+
+- It's better to install **React** and **ReactDOM** via npm instead of using CDN links.
   ```
-  "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html",
-    "test": "jest"
-  }
+  npm install react
+  npm install react-dom
   ```
-- You can now start your project using:
+
+**Importing React in Your Project**
+
+- Once React is installed, you'll need to import it into your files:
   ```
-  npm start
+  import React from "react";
+  import ReactDOM from "react-dom";
   ```
+- If you try to use the above code, you might see an error: **"Browser Scripts cannot have import or export"**.
+- To fix this, specify that your JavaScript files are **modules**:
+  ```
+  <script type="module" src="App.js"></script>
+  ```
+
+**Why Use Parcel?**
+
+Parcel provides several advantages for development:
+
+- **Dev Build**: Automatically sets up a local server.
+- **Hot Module Replacement (HMR)**: Auto-refreshes the page when changes are made.
+- **File Watching Algorithm**: Tracks file changes and is written in C++ for efficiency.
+- **Faster Development**: Uses cache to speed up rebuilds.
+- **Image Optimization**: Automatically optimizes images during development.
+- **Production Build**: Minifies and compresses files for optimal performance.
+- **Consistent Hashing**: Ensures efficient caching of assets.
+- **Code Splitting**: Automatically splits code into smaller bundles for faster loading.
+- **Differential Bundling**: Creates optimized bundles for different environments (e.g., modern vs. legacy browsers).
 
 ---
 
-**🖼️ Part 2 - Rendering Elements with React**
+**🌟 Key Takeaways**
 
-- In **React**, we use the `createElement` method to create elements, which are then rendered to the DOM using `root.render()`.
-- **React.createElement** returns a JavaScript object, which gets transformed into an HTML element when rendered on the DOM.
+- **NPM** is crucial for managing project dependencies.
+- **Parcel** makes development faster and easier by bundling assets, optimizing files, and offering great developer experience features like Hot Module Replacement.
+- **React** should be installed using npm, and you'll need to configure your project to support ES module imports.
 
----
+```jsx
 
-**🔄 Part 3 - JSX vs React**
 
-- **JSX** is a syntax that allows us to write HTML-like code within JavaScript. However, it’s not exactly HTML; it looks like HTML but behaves differently.
-- **JSX** makes writing React components easier, but it's optional.
 
-**Creating a Heading in React:**
+npm init
 
-- Without JSX (Core React):
-  ```
-  const heading = React.createElement(
-    "h1",
-    { id: "heading" },
-    "Namaste React Using Core React ✨"
-  );
-  ```
-- With JSX:
-  ```
-  const jsxHeading = <h1>Namaste React using JSX ✨</h1>;
-  ```
-- Both methods output the same result under the hood: an object representation of the DOM.
+npm install -D parcel
+npx parcel index.html
 
-**What Happens Behind the Scenes:**
+npm parcel build index.html
 
-1. JSX code is **transpiled** by Babel into React's `createElement` calls.
-2. The result is a **React element**, which is essentially a JavaScript object.
-3. The React element is then **rendered** into an **HTML element** in the browser.
+npm i react
+npm i react-dom
 
-**JSX Syntax Rules:**
+import react from 'react'
+import ReactDom from 'react-dom'
 
-- Use `className` instead of `class`.
-- Wrap multiple lines of JSX in parentheses.
-- Use **camelCase** for JSX attributes.
+<script  type="module" src="">
 
----
+.gitignore = /node-modules
+/dist
+.parcel-cache
 
-**🔧 Part 4 - Understanding React Components**
-
-**Types of React Components:**
-
-1. **Class-Based Components**: The old way of writing components using JavaScript classes.
-2. **Functional Components**: The modern approach using JavaScript functions.
-
-**Creating Functional Components:**
-
-- With return statement:
-  ```
-  const HeadingComponent = () => {
-    return <h1>Namaste React Functional Component ✨</h1>;
-  };
-  ```
-- Without return statement:
-  ```
-  const HeadingComponent = () => (
-    <div id="container">
-      <h1 className="heading">Namaste React Functional Component ✨</h1>
-    </div>
-  );
-  ```
-- Both versions are valid. JSX can be returned directly from the arrow function.
-
----
-
-**🏗️ Part 5 - Component Composition**
-
-**Rendering Elements and Components:**
-
-- **React Element**:
-  ```
-  const heading = (
-    <h1 className="head" tabIndex="5">Namaste React Element!</h1>
-  );
-  root.render(heading);
-  ```
-- **Functional Component**:
-  ```
-  const HeadingComponent = () => (
-    <div id="container">
-      <h1 className="heading">Namaste React Functional Component ✨</h1>
-    </div>
-  );
-  root.render(<HeadingComponent />);
-  ```
-
-**Composing Components:**
-
-- Components can be composed by nesting them within each other.
-
-Example:
 
 ```
-const Title = () => (
-  <h1 className="heading">Namaste React Title ✨</h1>
-);
-
-const Heading = () => (
-  <div id="container">
-    <Title />
-    <h1 className="heading">Namaste React Functional Component ✨</h1>
-  </div>
-);
-```
-
-- This is called **Component Composition**, where one component renders another.
-
----
-
-**📝 Part 6 - Using Arrow Functions vs Normal Functions**
-
-- You can use regular functions instead of arrow functions to define components:
-  ```
-  const Title = function () {
-    return <h1>This is done using a normal function!</h1>;
-  };
-  ```
-- Arrow functions are the modern standard (introduced in ES6) and preferred for their cleaner syntax.
-
----
-
-**🔐 Part 7 - Security in JSX**
-
-- JSX helps prevent cross-site scripting (XSS) attacks by escaping values automatically.
-- You can pass JavaScript expressions within `{}` in JSX.
-
-**Ways to Write Components in JSX:**
-
-1. `{Title()}`
-2. `<Title />`
-3. `<Title></Title>`
-
-All these are valid methods for rendering components in JSX.
